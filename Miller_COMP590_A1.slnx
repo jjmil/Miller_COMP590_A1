@@ -1,0 +1,5 @@
+﻿<Solution>
+  <Project Path="Google.XR.Cardboard.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Google.XR.Cardboard.Editor.csproj" />
+</Solution>

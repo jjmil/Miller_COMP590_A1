@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,7 @@ public class ButtonClick : MonoBehaviour
 {
 
     public BallPrefab ballPrefab;
+    private bool shooting = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,10 +19,20 @@ public class ButtonClick : MonoBehaviour
     {
         if (Touchscreen.current.press.isPressed)
         {
-            BallPrefab ball = Instantiate<BallPrefab>(ballPrefab);
-            ball.transform.localPosition = transform.position;
-            ball.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward *
-                UnityEngine.Random.Range(500, 750));
+            if (!shooting)
+            {
+                BallPrefab ball = Instantiate<BallPrefab>(ballPrefab);
+                ball.transform.localPosition = transform.position;
+                //ball.inst = ball;
+                //Destroy(ball.inst);
+                ball.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward *
+                    UnityEngine.Random.Range(500, 750));
+                //shooting = true;
+            }
+        }
+        else
+        {
+            shooting = false;
         }
     }
 }
